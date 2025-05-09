@@ -10,7 +10,6 @@ class Spinner:
     def __init__(self, message: str | None = None, color: Color | None = None) -> None:
         self.color = color
 
-        # Set default message with assistant prefix if color available
         if message is None:
             if color:
                 self.message = color.magenta("Assistant: ", bold=True) + color.yellow(
@@ -29,7 +28,6 @@ class Spinner:
         frames = ["⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷"]
         i = 0
 
-        # Display message with color if color is provided
         if self.color:
             sys.stdout.write(self.color.yellow(f"{self.message} "))
         else:
@@ -48,10 +46,7 @@ class Spinner:
             sys.stdout.write("\b\b")
             i += 1
 
-        # Clear the spinner
-        sys.stdout.write(
-            "\r\033[K"
-        )  # \r moves cursor to start of line, \033[K clears to end of line
+        sys.stdout.write("\r\033[K")
         sys.stdout.flush()
 
     def start(self) -> None:

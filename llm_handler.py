@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-class SimpleLLMHandler:
+class LLMHandler:
     def __init__(
         self,
         provider: str = "openai",

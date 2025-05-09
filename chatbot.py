@@ -1,4 +1,4 @@
-from llm_handler import SimpleLLMHandler
+from llm_handler import LLMHandler
 from colors import Color
 from spinner import Spinner
 
@@ -8,7 +8,7 @@ color = Color()
 print(color.cyan("🤖 Welcome to Your Simple AI Assistant!", bold=True))
 print(color.yellow("Type 'exit' to end the chat.\n"))
 
-llm = SimpleLLMHandler(
+ai_friend = LLMHandler(
     # provider="openai",
     # model="gpt-4o-mini",
     provider="ollama",
@@ -25,7 +25,7 @@ while True:
 
     try:
         with Spinner(color=color):
-            reply = llm.generate(user_input)
+            reply = ai_friend.generate(user_input)
 
         print(color.magenta("Assistant: ", bold=True) + reply)
     except Exception as e:
