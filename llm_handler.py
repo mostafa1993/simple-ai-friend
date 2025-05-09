@@ -65,6 +65,7 @@ class SimpleLLMHandler:
         data = {"model": self.model, "messages": messages}
 
         response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status()
         result = response.json()
         reply = result["choices"][0]["message"]["content"]
 
@@ -92,6 +93,7 @@ class SimpleLLMHandler:
         data = {"model": self.model, "messages": messages, "stream": False}
 
         response = requests.post(url, json=data)
+        response.raise_for_status()
         result = response.json()
         reply = result.get("message", {}).get("content", "No reply")
 
