@@ -19,6 +19,7 @@ ai_friend = LLMHandler(
 
 while True:
     user_input = input(color.blue("You: ", bold=True))
+    print()
     if user_input.lower() == "exit":
         print(color.cyan("👋 Goodbye!"))
         break
