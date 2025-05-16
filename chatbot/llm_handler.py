@@ -16,15 +16,15 @@ class LLMHandler:
         self.provider = provider.lower()
         self.api_key = os.getenv("OPENAI_API_KEY")
         if self.provider == "openai" and not self.api_key:
-            raise ValueError(
-                "OPENAI_API_KEY environment variable is required for OpenAI"
-            )
+            raise ValueError("OPENAI_API_KEY environment variable is required for OpenAI")
         self.history = []
         self.model = model
         self.system_prompt = (
             f"Your name is {name}, and you are a {role}. "
             "Always respond accordingly to this role."
         )
+        self.name = name
+        self.role = role
 
     def add_to_history(self, role: str, content: str) -> None:
         self.history.append({"role": role, "content": content})
